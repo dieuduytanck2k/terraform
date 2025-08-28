@@ -76,7 +76,7 @@ You can see this configuration in the `modules/iam/main.tf` file.
 
 <img src="./image/iam.png" alt="iam" width="300"/>
 
-I create a Service Account named githubactions and grant it three roles:
+I create a Service Account for github actions and grant it three roles:
 
 - `roles/artifactregistry.writer` - allow pushing container images to Artifact Registry.
 
