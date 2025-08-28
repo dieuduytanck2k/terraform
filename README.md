@@ -17,7 +17,22 @@ gcloud projects add-iam-policy-binding devops-467006 --member="serviceAccount:te
 - `roles/serviceusage.serviceUsageAdmin` – enable and manage GCP services (APIs).  
 - `roles/iam.serviceAccountKeyAdmin` – create and manage service account keys.
 
-# 3. Initialize Terraform
+# 3. Authenticate with Application Default Credentials (ADC) and grant impersonation rights
+
+```config
+gcloud auth application-default login
+```
+
+```config
+gcloud projects add-iam-policy-binding "<project-name>" --member="user:<account>@gmail.com" --role="roles/iam.serviceAccountTokenCreator"
+```
+
+Provider (with impersonation)
+
+<img src="./image/artifact.png" alt="Bucket for Statefile" width="300"/>
+
+
+# 4. Initialize Terraform
 
 ```conf
 terraform workspace new prod
@@ -35,13 +50,13 @@ terraform plan
 terraform apply
 ```
 
-# 4. Create a GCS Bucket for Terraform State
+# 5. Create a GCS Bucket for Terraform State
 
 You can see this configuration in the `main.tf` file.
 
 <img src="./image/gcs.png" alt="Bucket for Statefile" width="300"/>
 
-# 5. Migrate statefile from local to GCS
+# 6. Migrate statefile from local to GCS bucket
 
 ```config
 terraformm init -reconfig
@@ -50,3 +65,11 @@ terraformm init -reconfig
 You can see this configuration in the `terraform.tf` file.
 
 <img src="./image/bucket-statefile.png" alt="Bucket for Statefile" width="300"/>
+
+# 7. Create Google Artifact Registry
+
+<img src="./image/artifact.png" alt="Bucket for Statefile" width="300"/>
+
+# 8. Create Service Account for Github Actions
+
+You can see this configuration in the `modules/iam/main.tf` file.

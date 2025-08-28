@@ -1,7 +1,8 @@
 provider "google" {
-  credentials = file("/opt/key/terraform-sa.json")
   project     = var.project_id
   region      = var.region
+
+  impersonate_service_account = "terraform-sa@devops-467006.iam.gserviceaccount.com"
 }
 
 resource "google_project_service" "core_apis" {

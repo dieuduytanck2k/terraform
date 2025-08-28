@@ -9,6 +9,5 @@ terraform {
   backend "gcs" {
     bucket = "terraform-tf-speedforce-demo-nodejs-2025"
     prefix = "env/prod"
-    credentials = "/opt/key/terraform-sa.json"
   }
 }
