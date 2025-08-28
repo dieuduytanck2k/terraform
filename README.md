@@ -18,4 +18,4 @@ terraform workspace new prod
 
 # 4. Create a GCS Bucket for Terraform State
 
-<img src="./image/gcs.png" alt="Bucket for Statefile" width="200"/>
+<img src="./image/gcs.png" alt="Bucket for Statefile" width="300"/>
