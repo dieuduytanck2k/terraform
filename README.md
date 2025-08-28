@@ -29,7 +29,7 @@ gcloud projects add-iam-policy-binding "<project-name>" --member="user:<account>
 
 Provider (with impersonation)
 
-<img src="./image/serviceaccount.png" alt="Bucket for Statefile" width="300"/>
+<img src="./image/serviceaccount.png" alt="Bucket for Statefile" width="500"/>
 
 
 # 4. Initialize Terraform
