@@ -1,10 +1,22 @@
-# 1. Create a Service Account for Terraform
+# 1. Summary
+
+- **This project uses two separate service accounts**
+
+- **Terraform Service Account**
+
+    - Used by Terraform to create and manage Google Cloud resources (e.g., Cloud Run, Artifact Registry, IAM).
+
+- **GitHub Actions Service Account**
+
+    - Used by GitHub Actions workflows (CI/CD pipeline) to deploy applications.
+
+# 2. Create a Service Account for Terraform
 
 ```conf
 gcloud iam service-accounts create terraform-sa --description="Service Account for Terraform" --display-name="terraform-sa"
 ```
 
-# 2. Grant the necessary roles for Service Account 
+# 3. Grant the necessary roles for Service Account 
 
 ```conf
 gcloud projects add-iam-policy-binding devops-467006 --member="serviceAccount:terraform-sa@devops-467006.iam.gserviceaccount.com" --role="roles/storage.admin" --role="roles/resourcemanager.projectIamAdmin" --role="roles/iam.serviceAccountAdmin" --role="roles/artifactregistry.admin" --role="roles/serviceusage.serviceUsageAdmin" --role="roles/iam.serviceAccountKeyAdmin"
@@ -17,7 +29,7 @@ gcloud projects add-iam-policy-binding devops-467006 --member="serviceAccount:te
 - `roles/serviceusage.serviceUsageAdmin` – enable and manage GCP services (APIs).  
 - `roles/iam.serviceAccountKeyAdmin` – create and manage service account keys.
 
-# 3. Authenticate with Application Default Credentials (ADC) and grant impersonation rights
+# 4. Authenticate with Application Default Credentials (ADC) and grant impersonation rights
 
 ```config
 gcloud auth application-default login
@@ -32,7 +44,7 @@ Provider block with impersonation in main.tf
 <img src="./image/serviceaccount.png" alt="serviceaccount" width="500"/>
 
 
-# 4. Initialize Terraform
+# 5. Initialize Terraform
 
 ```conf
 terraform workspace new prod
@@ -50,13 +62,13 @@ terraform plan
 terraform apply
 ```
 
-# 5. Create a GCS Bucket for Terraform State
+# 6. Create a GCS Bucket for Terraform State
 
 You can see this configuration in the `main.tf` file.
 
 <img src="./image/gcs.png" alt="gcs" width="300"/>
 
-# 6. Migrate statefile from local to GCS bucket
+# 7. Migrate statefile from local to GCS bucket
 
 ```config
 terraformm init -reconfig
@@ -66,11 +78,11 @@ You can see this configuration in the `terraform.tf` file.
 
 <img src="./image/bucket-statefile.png" alt="Bucket for Statefile" width="300"/>
 
-# 7. Create Google Artifact Registry
+# 8. Create Google Artifact Registry
 
 <img src="./image/artifact.png" alt="artifact" width="300"/>
 
-# 8. Create Service Account for Github Actions
+# 9. Create Service Account for Github Actions
 
 You can see this configuration in the `modules/iam/main.tf` file.
 
