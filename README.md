@@ -10,6 +10,13 @@ gcloud iam service-accounts create terraform-sa --description="Service Account f
 gcloud projects add-iam-policy-binding devops-467006 --member="serviceAccount:terraform-sa@devops-467006.iam.gserviceaccount.com" --role="roles/storage.admin" --role="roles/resourcemanager.projectIamAdmin" --role="roles/iam.serviceAccountAdmin" --role="roles/artifactregistry.admin" --role="roles/serviceusage.serviceUsageAdmin" --role="roles/iam.serviceAccountKeyAdmin"
 ```
 
+- `roles/storage.admin` – manage GCS buckets and objects (for remote state).  
+- `roles/resourcemanager.projectIamAdmin` – manage IAM policy at project level.  
+- `roles/iam.serviceAccountAdmin` – create and manage service accounts.  
+- `roles/artifactregistry.admin` – manage Artifact Registry repositories and images.  
+- `roles/serviceusage.serviceUsageAdmin` – enable and manage GCP services (APIs).  
+- `roles/iam.serviceAccountKeyAdmin` – create and manage service account keys.
+
 # 3. Create workspace for Terraform
 
 ```conf
