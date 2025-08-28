@@ -1,14 +1,14 @@
 # 1. Summary
 
-- **This project uses two separate service accounts**
+- **This project uses two separate service accounts**:
 
-- **Terraform Service Account**
+    - **Terraform Service Account**
 
-    - Used by Terraform to create and manage Google Cloud resources (e.g., Cloud Run, Artifact Registry, IAM).
+        - Used by Terraform to create and manage Google Cloud resources (e.g., Cloud Run, Artifact Registry, IAM).
 
-- **GitHub Actions Service Account**
+    - **GitHub Actions Service Account**
 
-    - Used by GitHub Actions workflows (CI/CD pipeline) to deploy applications.
+        - Used by GitHub Actions workflows (CI/CD pipeline) to deploy applications.
 
 # 2. Create a Service Account for Terraform
 
