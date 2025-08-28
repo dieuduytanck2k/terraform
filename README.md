@@ -17,10 +17,22 @@ gcloud projects add-iam-policy-binding devops-467006 --member="serviceAccount:te
 - `roles/serviceusage.serviceUsageAdmin` – enable and manage GCP services (APIs).  
 - `roles/iam.serviceAccountKeyAdmin` – create and manage service account keys.
 
-# 3. Create workspace for Terraform
+# 3. Initialize Terraform
 
 ```conf
 terraform workspace new prod
+```
+
+```config
+terraform init
+```
+
+```config
+terraform plan
+```
+
+```config
+terraform apply
 ```
 
 # 4. Create a GCS Bucket for Terraform State
