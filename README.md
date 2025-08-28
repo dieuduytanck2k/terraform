@@ -27,9 +27,9 @@ gcloud auth application-default login
 gcloud projects add-iam-policy-binding "<project-name>" --member="user:<account>@gmail.com" --role="roles/iam.serviceAccountTokenCreator"
 ```
 
-Provider (with impersonation)
+Provider block with impersonation in main.tf
 
-<img src="./image/serviceaccount.png" alt="Bucket for Statefile" width="500"/>
+<img src="./image/serviceaccount.png" alt="serviceaccount" width="500"/>
 
 
 # 4. Initialize Terraform
@@ -54,7 +54,7 @@ terraform apply
 
 You can see this configuration in the `main.tf` file.
 
-<img src="./image/gcs.png" alt="Bucket for Statefile" width="300"/>
+<img src="./image/gcs.png" alt="gcs" width="300"/>
 
 # 6. Migrate statefile from local to GCS bucket
 
@@ -68,8 +68,18 @@ You can see this configuration in the `terraform.tf` file.
 
 # 7. Create Google Artifact Registry
 
-<img src="./image/artifact.png" alt="Bucket for Statefile" width="300"/>
+<img src="./image/artifact.png" alt="artifact" width="300"/>
 
 # 8. Create Service Account for Github Actions
 
 You can see this configuration in the `modules/iam/main.tf` file.
+
+<img src="./image/iam.png" alt="iam" width="300"/>
+
+I create a Service Account named githubactions and grant it three roles:
+
+- `roles/artifactregistry.writer` - allow pushing container images to Artifact Registry.
+
+- `roles/run.admin` - allow managing Cloud Run services.
+
+- `roles/iam.serviceAccountUser` - allow this Service Account to be used when deploying Cloud Run.
