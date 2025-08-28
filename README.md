@@ -18,4 +18,16 @@ terraform workspace new prod
 
 # 4. Create a GCS Bucket for Terraform State
 
+You can see this configuration in the `main.tf` file.
+
 <img src="./image/gcs.png" alt="Bucket for Statefile" width="300"/>
+
+# 5. Migrate statefile from local to GCS
+
+```config
+terraformm init -reconfig
+```
+
+You can see this configuration in the `terraform.tf` file.
+
+<img src="./image/bucket-statefile.png" alt="Bucket for Statefile" width="300"/>
